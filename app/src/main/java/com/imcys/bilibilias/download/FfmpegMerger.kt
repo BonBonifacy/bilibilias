@@ -179,8 +179,6 @@ class FfmpegMerger(
         return buildList {
             // 基础参数
             add("-y")
-            add("-strict")
-            add("-2")
 
             // 输入文件
             mediaInputs.forEach {
@@ -253,9 +251,6 @@ class FfmpegMerger(
                 add("title=Cover")
             }
 
-            if (audioEnabled && mediaContainerConfig.audioContainer == MediaContainer.MP3) {
-                addAll(listOf("-codec:a", "libmp3lame", "-q:a","2"))
-            }
 
             add("-metadata")
             add("title=\"${task.downloadSegment.title}\"")
